@@ -7,9 +7,9 @@ const timer = {
   seconds: document.querySelector('span[data-seconds]'),
 };
 
-timer.btn.addEventListener('click', handlerStart);
+timer.btn.addEventListener('click', handlerTimer);
 
-function handlerStart() {
+function handlerTimer() {
   const { input, btn, days, hours, minutes, seconds } = timer;
   const currentTime = new Date();
   const selectedTime = new Date(input.value);
@@ -19,13 +19,10 @@ function handlerStart() {
     const intervalId = setInterval(() => {
       btn.disabled = true;
       timerTime--;
-
       days.textContent = getValue(timerTime / (24 * 3600));
       hours.textContent = getValue((timerTime % (24 * 3600)) / 3600);
       minutes.textContent = getValue((timerTime % 3600) / 60);
       seconds.textContent = getValue(timerTime % 60);
-
-      console.log(timerTime);
     }, 1000);
 
     setTimeout(() => {
@@ -39,6 +36,16 @@ function handlerStart() {
   }
 }
 
-function getValue(timerTime) {
-  return Math.floor(timerTime).toString().padStart(2, '0');
+const padStart = value => value.toString().padStart(2, '0');
+const getValue = timerTime => padStart(Math.floor(timerTime));
+
+function getStartDate(date) {
+  const year = date.getFullYear();
+  const month = padStart(date.getMonth() + 1);
+  const day = padStart(date.getDate());
+  const hours = padStart(date.getHours());
+  const minutes = padStart(date.getMinutes());
+  timer.input.value = `${year}-${month}-${day}T${hours}:${minutes}`;
 }
+
+getStartDate(new Date());
