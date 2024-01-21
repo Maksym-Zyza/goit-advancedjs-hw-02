@@ -1,0 +1,1 @@
+form{display:flex;align-items:center;justify-content:center;flex-direction:column;margin-top:8%}label>input,button{padding:8px;width:200px;height:32px;border-radius:8px;border:1px solid burlywood}label{display:flex;flex-direction:column;margin-bottom:32px}button{margin-top:12px;background:burlywood;cursor:pointer}button:focus,button:hover{background:rgb(220,158,76)}
