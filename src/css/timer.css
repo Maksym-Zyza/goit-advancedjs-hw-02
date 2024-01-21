@@ -3,18 +3,21 @@ button,
 div {
   display: block;
   margin: 24px auto;
-  font-size: medium;
+  font-size: large;
   font-family: 'Roboto', sans-serif;
 }
 input,
 button {
-  margin-top: 8%;
   padding: 12px;
-  width: 212px;
+  width: 280px;
   border-radius: 8px;
   border: 1px solid aquamarine;
 }
+input {
+  margin-top: 16%;
+}
 button {
+  margin-top: 6%;
   background: aquamarine;
   cursor: pointer;
 }
