@@ -5,20 +5,20 @@ form {
   flex-direction: column;
   margin-top: 8%;
 }
-
-label > input,
-button {
-  padding: 8px;
-  width: 200px;
-  height: 32px;
-  border-radius: 8px;
-  border: 1px solid burlywood;
-}
-
 label {
   display: flex;
   flex-direction: column;
   margin-bottom: 32px;
+  font-size: large;
+}
+label > input,
+button {
+  padding: 16px;
+  width: 300px;
+  /* height: 32px; */
+  font-size: large;
+  border-radius: 8px;
+  border: 1px solid burlywood;
 }
 button {
   margin-top: 12px;
