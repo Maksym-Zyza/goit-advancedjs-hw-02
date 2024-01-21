@@ -7,8 +7,9 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
   background-color: #fafafa;
-  color: #212121;
+  color: #5d6167;
   line-height: 1.5;
 }
 
