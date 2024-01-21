@@ -1,0 +1,1 @@
+button[data-start]{margin-top:24%}button{display:block;padding:12px;margin:32px auto;width:240px;font-size:large;font-weight:500;border-radius:8px;background:#f09d5d;border:1px solid #f09d5d;cursor:pointer;transition:background .3s ease}button:focus,button:hover{background:#f37a1d}
