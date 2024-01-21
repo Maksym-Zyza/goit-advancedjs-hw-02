@@ -9,11 +9,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Roboto', sans-serif;
   background-color: #fafafa;
-  color: #5d6167;
+  color: #2a2a2a;
   line-height: 1.5;
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+input,
+button {
+  padding: 16px;
+  width: 300px;
+  font-size: large;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid burlywood;
+}
+button {
+  background: burlywood;
+  transition: background 0.3s ease;
+}
+button:focus,
+button:hover {
+  background: rgb(220, 158, 76);
 }

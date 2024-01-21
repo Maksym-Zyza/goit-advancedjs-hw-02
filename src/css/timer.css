@@ -6,24 +6,11 @@ div {
   font-size: large;
   font-family: 'Roboto', sans-serif;
 }
-input,
-button {
-  padding: 12px;
-  width: 280px;
-  border-radius: 8px;
-  border: 1px solid aquamarine;
-}
 input {
-  margin-top: 16%;
+  margin-top: 12%;
 }
 button {
-  margin-top: 6%;
-  background: aquamarine;
-  cursor: pointer;
-}
-button:focus,
-button:hover {
-  background: rgb(99, 247, 198);
+  margin-top: 4%;
 }
 
 .timer {

@@ -52,7 +52,7 @@ function showIziToast(message, color) {
     close: false,
     timeout: 7000,
     position: 'topRight',
-    messageColor: 'white',
+    messageColor: '#2a2a2a',
     closeOnClick: true,
     animateInside: true,
     backgroundColor: color,
