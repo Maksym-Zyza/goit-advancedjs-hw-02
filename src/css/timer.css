@@ -1,10 +1,7 @@
 input,
-button,
-div {
+button {
   display: block;
   margin: 24px auto;
-  font-size: large;
-  font-family: 'Roboto', sans-serif;
 }
 input {
   margin-top: 12%;
@@ -15,6 +12,8 @@ button {
 
 .timer {
   display: flex;
+  justify-content: space-between;
+  margin: 36px auto;
   max-width: 400px;
 }
 .field {

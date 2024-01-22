@@ -1,51 +1,55 @@
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
+import { convertMs, addLeadingZero } from './helper';
+
 const timer = {
-  input: document.querySelector('#datetime-picker'),
   btn: document.querySelector('button[data-start]'),
   days: document.querySelector('span[data-days]'),
   hours: document.querySelector('span[data-hours]'),
   minutes: document.querySelector('span[data-minutes]'),
   seconds: document.querySelector('span[data-seconds]'),
 };
+timer.btn.disabled = true;
+let selectedTime;
 
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    selectedTime = selectedDates[0];
+    if (selectedDates[0] < new Date()) {
+      alert('Please choose a date in the future');
+    } else timer.btn.disabled = false;
+  },
+};
+
+flatpickr('input[type="text"]', options);
 timer.btn.addEventListener('click', handlerTimer);
 
 function handlerTimer() {
-  const { input, btn, days, hours, minutes, seconds } = timer;
   const currentTime = new Date();
-  const selectedTime = new Date(input.value);
-  let timerTime = Math.floor((selectedTime - currentTime) / 1000);
+  let timerTime = Math.floor(selectedTime - currentTime);
 
-  if (timerTime > 0) {
-    const intervalId = setInterval(() => {
-      btn.disabled = true;
-      timerTime--;
-      days.textContent = getValue(timerTime / (24 * 3600));
-      hours.textContent = getValue((timerTime % (24 * 3600)) / 3600);
-      minutes.textContent = getValue((timerTime % 3600) / 60);
-      seconds.textContent = getValue(timerTime % 60);
-    }, 1000);
+  if (timerTime <= 0) return;
+  const intervalId = setInterval(() => {
+    timer.btn.disabled = true;
+    timerTime -= 1000;
+    setValues(timerTime);
+  }, 1000);
 
-    setTimeout(() => {
-      clearInterval(intervalId);
-      btn.disabled = false;
-      console.log(intervalId);
-    }, timerTime * 1000);
-  } else {
-    alert('Please choose a date in the future');
-    btn.disabled = false;
-  }
+  setTimeout(() => {
+    clearInterval(intervalId);
+    timer.btn.disabled = false;
+    console.log(intervalId);
+  }, timerTime);
 }
 
-const padStart = value => value.toString().padStart(2, '0');
-const getValue = timerTime => padStart(Math.floor(timerTime));
-
-function getStartDate(date) {
-  const year = date.getFullYear();
-  const month = padStart(date.getMonth() + 1);
-  const day = padStart(date.getDate());
-  const hours = padStart(date.getHours());
-  const minutes = padStart(date.getMinutes());
-  timer.input.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+function setValues(time) {
+  const { days, hours, minutes, seconds } = convertMs(time);
+  timer.days.textContent = addLeadingZero(days);
+  timer.hours.textContent = addLeadingZero(hours);
+  timer.minutes.textContent = addLeadingZero(minutes);
+  timer.seconds.textContent = addLeadingZero(seconds);
 }
-
-getStartDate(new Date());
