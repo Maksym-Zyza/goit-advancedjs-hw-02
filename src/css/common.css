@@ -35,3 +35,11 @@ button:focus,
 button:hover {
   background: rgb(220, 158, 76);
 }
+li {
+  color: burlywood;
+}
+a {
+  color: burlywood;
+  font-size: large;
+  padding: 0 8px;
+}

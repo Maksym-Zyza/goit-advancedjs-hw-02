@@ -2,6 +2,7 @@ input,
 button {
   display: block;
   margin: 24px auto;
+  font-family: 'Roboto', sans-serif;
 }
 input {
   margin-top: 12%;
