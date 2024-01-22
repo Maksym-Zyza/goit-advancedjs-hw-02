@@ -1,3 +1,8 @@
+import { showIziToast } from './iziToast';
+import { getRandomHexColor } from './helper';
+
+const TOAST_TIME = 2000;
+const INTERVAL_TIME = 1000;
 const btnStart = document.querySelector('button[data-start]');
 const btnStop = document.querySelector('button[data-stop]');
 
@@ -6,20 +11,16 @@ btnStop.addEventListener('click', () => handler(false));
 
 let intervalId;
 
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-
 function changeColors(start) {
   if (start) {
     intervalId = setInterval(() => {
       document.body.style.backgroundColor = getRandomHexColor();
-    }, 1000);
+    }, INTERVAL_TIME);
+    showIziToast('✅ Started color change', '#9ae39c', TOAST_TIME);
   } else {
     clearInterval(intervalId);
     document.body.style.backgroundColor = '#fff';
+    showIziToast('❌ Stopped color change', '#fa903e', TOAST_TIME);
   }
 }
 

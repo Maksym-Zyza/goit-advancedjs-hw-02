@@ -1,7 +1,9 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import { showIziToast } from './iziToast';
 import { convertMs, addLeadingZero } from './helper';
 
+const TOAST_TIME = 2500;
 const timer = {
   btn: document.querySelector('button[data-start]'),
   days: document.querySelector('span[data-days]'),
@@ -20,7 +22,11 @@ const options = {
   onClose(selectedDates) {
     selectedTime = selectedDates[0];
     if (selectedDates[0] < new Date()) {
-      alert('Please choose a date in the future');
+      showIziToast(
+        '❗️ Please choose a date in the future',
+        '#fa903e',
+        TOAST_TIME
+      );
     } else timer.btn.disabled = false;
   },
 };
@@ -33,6 +39,7 @@ function handlerTimer() {
   let timerTime = Math.floor(selectedTime - currentTime);
 
   if (timerTime <= 0) return;
+  showIziToast('✅ Timer started', '#9ae39c', TOAST_TIME);
   const intervalId = setInterval(() => {
     timer.btn.disabled = true;
     timerTime -= 1000;
@@ -42,7 +49,7 @@ function handlerTimer() {
   setTimeout(() => {
     clearInterval(intervalId);
     timer.btn.disabled = false;
-    console.log(intervalId);
+    showIziToast('❌ Timer stopped', '#fa903e', TOAST_TIME);
   }, timerTime);
 }
 

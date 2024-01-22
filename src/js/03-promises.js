@@ -1,5 +1,4 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import { showIziToast } from './iziToast';
 
 const form = document.querySelector('.form');
 form.addEventListener('submit', onSubmit);
@@ -43,18 +42,4 @@ function delayCreatePromises(timeout, step, amount) {
         });
     }
   }, timeout);
-}
-
-function showIziToast(message, color) {
-  iziToast.show({
-    message,
-    drag: true,
-    close: false,
-    timeout: 7000,
-    position: 'topRight',
-    messageColor: '#2a2a2a',
-    closeOnClick: true,
-    animateInside: true,
-    backgroundColor: color,
-  });
 }
