@@ -5,6 +5,7 @@ import { convertMs, addLeadingZero } from './helper';
 
 const TOAST_TIME = 2500;
 const timer = {
+  input: document.querySelector('#datetime-picker'),
   btn: document.querySelector('button[data-start]'),
   days: document.querySelector('span[data-days]'),
   hours: document.querySelector('span[data-hours]'),
@@ -42,13 +43,14 @@ function handlerTimer() {
   showIziToast('✅ Timer started', '#9ae39c', TOAST_TIME);
   const intervalId = setInterval(() => {
     timer.btn.disabled = true;
+    timer.input.disabled = true;
     timerTime -= 1000;
     setValues(timerTime);
   }, 1000);
 
   setTimeout(() => {
     clearInterval(intervalId);
-    timer.btn.disabled = false;
+    timer.input.disabled = false;
     showIziToast('❌ Timer stopped', '#fa903e', TOAST_TIME);
   }, timerTime);
 }

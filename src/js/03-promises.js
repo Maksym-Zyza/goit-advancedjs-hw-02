@@ -29,9 +29,8 @@ function onSubmit(evt) {
 
 function delayCreatePromises(timeout, step, amount) {
   setTimeout(() => {
-    for (let i = 0; i < amount; i++) {
-      const promiseDelay = i === 0 ? 0 : step * i;
-      createPromise(i, promiseDelay)
+    for (let i = 1; i <= amount; i++) {
+      createPromise(i, step * i)
         .then(({ position, delay }) => {
           const message = `✅ Fulfilled promise ${position} in ${delay}ms`;
           showIziToast(message, '#9ae39c');

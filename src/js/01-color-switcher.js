@@ -10,6 +10,7 @@ btnStart.addEventListener('click', () => handler(true));
 btnStop.addEventListener('click', () => handler(false));
 
 let intervalId;
+btnStop.disabled = true;
 
 function changeColors(start) {
   if (start) {
@@ -27,4 +28,5 @@ function changeColors(start) {
 function handler(start) {
   changeColors(start);
   btnStart.disabled = start;
+  btnStop.disabled = !start;
 }
